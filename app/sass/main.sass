@@ -1,0 +1,681 @@
+@import vars
+@import fonts
+@import libs
+
+*
+    margin: 0
+    padding: 0
+    font-family: Roboto
+
+html, body
+    width: 100%
+    overflow-x: hidden
+
+a
+    text-decoration: none
+    &:hover
+        text-decoration: underline
+
+
+////////////////start button//////////////////////////
+/* Rayen */
+
+.button
+	float: left
+	min-width: 100%
+	display: block
+	// margin: 1em
+	// padding: 1em 2em
+	border: none
+	background: none
+	color: inherit
+	vertical-align: middle
+	position: relative
+	z-index: 1
+	-webkit-backface-visibility: hidden
+	-moz-osx-font-smoothing: grayscale
+    color: #ffffff
+
+.button--text-upper 
+	letter-spacing: 2px
+	text-transform: uppercase
+
+.button--position
+    position: absolute
+    top: calc(100% - 46.5px)
+    color: #ffffff
+
+.button:focus 
+	outline: none
+
+.button > span 
+	vertical-align: middle
+
+.button--cursor-pointer
+    cursor: pointer
+
+.button--rayen 
+	overflow: hidden
+	padding: 0
+	width: 148px
+	background: $main
+
+.button--rayen.button--inverted 
+	color: #fff
+
+.button--rayen::before 
+	content: attr(data-text)
+	position: absolute
+	top: 0
+	left: -5%
+	width: 105%
+	height: 100%
+	background: $main
+	-webkit-transform: translate3d(-100%, 0, 0)
+	transform: translate3d(-100%, 0, 0)
+
+.button--rayen.button--inverted::before 
+	background: #fff
+	color: #ffffff
+
+.button--rayen > span 
+	display: block
+
+.button--rayen::before,
+.button--rayen > span 
+	padding: 1em 2em
+	-webkit-transition: -webkit-transform 0.3s
+	transition: transform 0.3s
+	-webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1)
+	transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1)
+
+.button--rayen:hover::before 
+	-webkit-transform: translate3d(-12.5%, 0, 0)
+	transform: translate3d(-12.5%, 0, 0)
+
+.button--rayen:hover > span 
+	-webkit-transform: translate3d(0, 100%, 0)
+	transform: translate3d(0, 100%, 0)
+
+.button--border-thin 
+	border: 1px solid
+
+.button--filter
+    position: absolute
+    width: 100%
+    height: 46.5px
+    background-color: #ffffff
+    opacity: 0.9
+    top: calc(100% - 46.5px)
+    z-index: 1
+
+///////////////////// end button ///////////////////////////
+
+
+//////////////HEADER////////////////////
+
+
+header
+    position: absolute
+    width: 100%
+    top: 0
+    left: 0
+    z-index: 20
+    &::before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 80px
+        background-image: transponent
+    form
+        position: absolute
+        right: 4%
+        width: 20%
+        top: 30px
+        &::after
+                content: url('../img/images/search.png')
+                position: absolute
+                right: 0
+        input
+            width: 100%
+            font-size: 18px
+            font-weight: 100
+            font-family: Roboto
+            background-color: transparent
+            border: none
+            padding-bottom: 6px
+            border-bottom: 1px solid #707070
+    .container
+        max-width: max-content
+        margin: 0 auto
+        padding: 0 10px
+        .header--body
+            position: relative
+            z-index: 12
+            margin: auto
+            nav
+                z-index: 12
+                ul
+                    display: flex
+                    li
+                        list-style: none
+                        padding: 30px 25px 25px 25px
+                        transition: all .5s
+                        box-sizing: border-box
+                        transition: all .3s
+                        position: relative
+                        &:hover
+                            background-color: $main
+                            transition: all .5s
+                            a
+                                transition: all .5s
+                                color: $white
+                        a
+                            color: $header
+                            text-decoration: none
+                            font-size: 21px
+    .logo
+        position: absolute
+        left: 5%
+        top: 30px
+        color: $header
+        text-decoration: none
+        font-weight: 300
+        font-size: 25px
+        font-style: Medium
+        text-transform: uppercase
+        &::before
+            content: 'at'
+            width: 30px 
+            height: 30px
+            border-radius: 50%
+            position: absolute
+            display: block
+            left: 0
+            top: 0
+            background-color: $yellow
+        @media screen and ( max-width: 970px )
+            left: 50%
+            transform: translate(-50%)
+            z-index: 14
+
+.header--burger
+    display: none
+    cursor: pointer
+    span
+        position: absolute
+        background-color: #ffffff
+        height: 2px
+        width: 70%
+        top: 12px
+        transition: all.5s ease 0s
+
+.header--burger.active
+    span
+        transform: scale(0)
+    &::before
+        transform: rotate(45deg)
+        top: 12px
+    &::after
+        transform: rotate(-225deg)
+        bottom: 12px
+
+
+
+@media screen and ( max-width: 970px )
+    header
+        &::before
+            height: 80px
+    .header--burger
+        display: block
+        position: absolute
+        width: 62px
+        height: 25px
+        top: 25px
+        left: 50px
+        z-index: 14
+        &::before, &::after
+            content: ''
+            background-color: #ffffff
+            height: 2px
+            width: 70%
+            position: absolute
+            transition: all.5s ease 0s
+        &::after
+            bottom: 0
+        &::before
+            top: 0
+    header .container .header--body nav
+        position: fixed
+        top: 0
+        left: 0
+        width: 100%
+        height: auto
+        background-image: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0.8) 90%, rgba(128, 128, 128, 0) 100%)
+        padding-top: 70px
+        top: -200%
+        transition: all .5s ease 0s
+        overflow: auto
+        border: none
+        ul
+            flex-direction: column
+            text-align: center
+            width: 100%
+            li
+                padding: 40px 0
+    header .container .header--body nav.active
+        top: 0
+    body.lock
+        overflow: hidden
+
+@media screen and ( max-width: 400px )
+    .header--burger
+        left: 15px
+//////////////HEADER////////////////////
+
+.inner
+    .bgrd
+        position: relative
+        width: 100%
+        img
+            width: 100%
+            height: 100%
+            object-fit: cover
+            object-position: center 0
+        .inner--text
+            position: absolute
+            bottom: 0
+            color: #ffffff
+            width: 100
+            z-index: 2
+            @media screen and ( max-width: 1400px )
+                margin-left: 3%
+            .last   
+                padding-top: 10px
+                background-color: rgba(255, 255, 255, 0.8)
+                width: 100%
+                color: #000000
+                .last--news
+                    display: flex
+                    margin-top: 26px
+                    @media screen and ( max-width: 370px )
+                        margin-bottom: 5%
+                    .new
+                        position: relative
+                        padding-bottom: 70px
+                        .new--text
+                            border-right: 1px solid #c1c1c1
+                            position: relative
+                            h2
+                                font-size: 20px
+                                font-weight: 700
+                                font-family: Roboto
+                                text-align: center
+                            a
+                                color: #000000
+                                h3
+                                    line-height: 27px
+                                    font-weight: 500
+                                    padding: 0 30px
+                                    @media screen and ( max-width: 1200px )
+                                        font-size: 14px
+                                    @media screen and ( max-width: 480px )
+                                        line-height: 20px
+                                    @media screen and ( max-width: 350px )
+                                        line-height: 16px
+                            h5
+                                position: absolute
+                                left: 30px
+                                font-weight: 700
+                                font-size: 17px
+                                padding-top: 20px
+                                color: $second
+                        .new:last-child
+                        border: none
+
+
+
+
+
+
+.sequence:nth-child(2n)
+    padding: 42px 4% 30px 4%
+    background-color: #f3f3f3
+    margin: 0
+    @media screen and ( max-width: 1200px )
+        padding: 20px 0
+
+
+
+.sequence:nth-child(2n+1)
+    padding: 42px 4% 30px 4%
+    background-color: #ffffff
+    margin-top: 0
+    @media screen and ( max-width: 1200px )
+        padding: 20px 0
+
+
+section
+    width: 92%
+    display: flex
+    margin: 0 auto
+    padding-top: 50px
+    justify-content: space-between
+    @media screen and ( max-width: 1200px )
+        flex-wrap: wrap
+        width: 100%
+
+.news--line, .main--news
+    h2
+        color: #000000
+        font-size: 18px
+        font-weight: 700
+        opacity: 0.7
+        width: 100%
+        padding-bottom: 30px
+        border-bottom: 1px $gray solid
+
+
+.sight--content
+    flex-wrap: wrap
+
+.sights-foot
+    h4
+        color: #000
+        opacity: 0.7
+
+.sight-foot
+    display: flex
+    .sight
+        margin: 40px 16px
+        .main
+            position: relative
+            img
+                max-width: 100%
+            .btn
+                position: absolute
+                width: 128px
+                right: 0px
+                top: 95%
+        .sight--description
+            max-width: 352px
+            line-height: 25px
+            font-weight: 500
+            position: relative
+            a
+                color: #000
+
+
+.news--line, .main--news
+    h2
+        margin-bottom: 20px
+
+.news--line
+    width: 21%
+    .news--description
+        border-bottom: 1px solid #cecece
+        margin-bottom: 10px
+        color: #2e2e2e
+        a
+            color: #000
+            p
+                max-width: 345px
+                line-height: 25px
+                font-weight: 400
+        h5
+            font-size: 18px
+            padding-bottom: 6px
+            padding-top: 5px
+
+.main--news
+    width: 70%
+    @media screen and ( max-width: 1200px )
+        width: 100%
+    @media screen and ( max-width: 1050px )
+        margin-bottom: 100px
+    @media screen and ( max-width: 750px )
+        margin-bottom: 50px
+
+.discript
+    width: 100%
+    position: absolute
+    top: 80%
+    background-color: #ffffff
+    opacity: 0.9
+    @media screen and ( max-width: 1650px )
+        top: 70%
+    @media screen and ( max-width: 800px )
+        top: 50%
+    @media screen and ( max-width: 400px )
+        height: 100%
+    @media screen and ( max-width: 360px )
+        top: 40%
+    .text
+        text-align: center
+        color: #000 
+        h3
+            font-size: 12
+            margin: 0
+            padding: 0
+        p
+            width: 53%
+            margin: 0 auto
+            z-index: 9
+            @media screen and ( max-width: 500px )
+                width: 80%
+                line-height: 16px
+
+.owl-nav
+    margin-top: 0
+    position: absolute
+    display: flex
+    justify-content: space-between
+    width: 100%
+    top: 82%
+    @media screen and ( max-width: 1650px )
+        top: 72%
+    @media screen and ( max-width: 800px )
+        top: 54%
+    @media screen and ( max-width: 400px )
+        top: 60%
+    @media screen and ( max-width: 360px )
+        top: 50%
+    .owl-prev
+        background-image: url('../img/images/prev.png') 
+        width: 20px
+        height: 36px
+        margin-left: 5%
+    .owl-next
+        background-image: url('../img/images/next.png')
+        width: 20px
+        height: 36px
+
+
+//////////////FOOTER////////////////////
+
+footer
+    margin-top: 150px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    background-color: $footer
+    width: 100% 
+    z-index: 10
+    position: relative
+    .footer--logo
+        position: absolute
+        text-transform: uppercase
+        left: 5%
+        top: 50px
+        color: #ffffff
+        text-decoration: none
+        font-weight: 700
+        font-size: 25px
+    ul
+        display: flex
+        margin: 0 auto
+        margin-top: 20px
+        li
+            list-style-type: none
+            padding: 30px
+            transition: .5s
+            &:hover
+                a
+                    color: #ffffff
+                    text-decoration: none
+                    transition: all .3s
+            a
+                color: $main
+                text-decoration: none
+                font-size: 20px
+    p
+        text-align: center
+        font-weight: 300
+        font-size: 18px
+        color: #ffffff
+        padding: 150px 0 50px 0
+        width: 60%
+        margin: 0 auto
+
+//////////////FOOTER/////////////////
+
+
+/////////////ADAPTIVE///////////////
+
+@media screen and ( max-width: 1870px  )
+    .main--news
+        margin-left: 5%
+@media screen and ( max-width: 1367px )
+    .bgrd p
+        max-width: 70%
+        top: 100px
+@media screen and ( max-width: 1200px )
+    .inner--info
+        justify-content: space-around
+    .news--line
+        width: 100%
+        .news--description
+            width: 100%
+            p
+                min-width: 100%
+    .main--news
+        margin-left: 0
+    .sight-foot
+        flex-wrap: wrap
+        justify-content: space-around
+    .bgrd
+        height: 600px
+    footer
+        ul
+            display: flex
+            flex-wrap: wrap
+            text-align: right
+            flex-direction: column
+            margin: 35px 0 auto 0 
+        p
+            width: 50%
+            padding: 0
+            padding-bottom: 50px
+@media screen and ( max-width: 540px )
+    .inner--info
+        display: block
+    footer
+        ul
+            margin-top: 100px
+            text-align: center
+            li
+                padding: 20px
+        p
+            width: 91.875%
+
+
+
+//////////////////////////LIST/////////////////////////////
+
+
+.list
+    margin-top: 120px
+
+
+
+//////////////////////////NEWS/////////////////////////////
+
+
+.path
+    margin-top: 123px
+    display: flex
+    margin-left: 5%
+    .branch
+        padding-left: 48px
+        position: relative
+        color: #000000
+        text-decoration: none
+        &::after, &::before
+            content: ''
+            display: block
+            width: 2px
+            height: 14px
+            background-color: $gray
+            position: absolute
+            right: -20%
+        &::after
+            transform: rotate(45deg)
+            top: 8.5px
+        &::before
+            transform: rotate(-45deg)
+    .branch:last-child
+        color: $main
+        &::after, &::before
+            display: none
+    .branch:first-child
+        padding-left: 0
+.hotel
+    width: 75%
+    @media screen and ( max-width: 1200px )
+        width: 100%
+    .intro--hotel
+        width: 100%
+        display: flex
+        justify-content: space-between
+        &::after
+            content: ''
+            position: absolute
+            width: 70px
+            height: 110px
+            left: 5%
+            background-color: $main
+        @media screen and ( max-width: 600px )
+            display: block
+            &::after
+                width: 40px
+                height: 70px
+        h1
+            font-size: 40px
+            margin-left: 55px
+            z-index: 9
+            position: relative
+            @media screen and ( max-width: 1200px )
+                margin-left: 10px
+        h5
+            font-size: 18px
+            padding-bottom: 6px
+            padding-top: 5px
+            @media screen and ( max-width: 1200px )
+                margin-right: 10px
+                margin-left: 10px
+    .hotel--main
+        margin-top: 13px
+        margin-bottom: 50px
+        img
+            width: 100%
+            object-fit: cover
+        p
+            margin-top: 40px
+            font-family: Roboto
+            font-size: 20px
+            line-height: 29px
+            @media screen and ( max-width: 1200px )
+                margin: 15px
+
